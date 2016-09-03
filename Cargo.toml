@@ -1,0 +1,13 @@
+[package]
+name = "body_count_rn"
+version = "0.1.0"
+authors = ["snotrz"]
+
+[dependencies]
+hyper = "0.9.7"
+encoding = "0.2.33"
+select = "0.2.2"
+diesel = "0.7.0"
+diesel_codegen = { version = "0.7.0", default-features = false, features = ["nightly", "postgres"] }
+dotenv = "0.8.0"
+dotenv_macros = "0.8.0"
