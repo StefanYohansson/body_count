@@ -7,3 +7,9 @@ authors = ["snotrz"]
 hyper = "0.9.7"
 encoding = "0.2.33"
 select = "0.2.2"
+postgres = "0.11"
+docopt = "0.6"
+rustc-serialize = "0.3"
+
+[dependencies.rustless]
+git = "https://github.com/rustless/rustless"
