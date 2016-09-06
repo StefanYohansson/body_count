@@ -1,7 +1,7 @@
 use std::io::Read;
 use std::collections::HashMap;
 
-use crawler::TheDead;
+use models::the_dead::TheDead;
 
 use hyper;
 
@@ -51,7 +51,8 @@ pub fn request() -> Vec<TheDead> {
                 address: the_dead.get("address").unwrap().clone(),
                 place: the_dead.get("place").unwrap().clone(),
                 cause_death: the_dead.get("cause_death").unwrap().clone(),
-                city: the_dead.get("city").unwrap().clone()
+                city: the_dead.get("city").unwrap().clone(),
+                source: "itep-rn".to_owned()
             });
             return acc;
         });

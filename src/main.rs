@@ -1,12 +1,26 @@
+#![feature(plugin, custom_derive)]
+#![plugin(serde_macros)]
+extern crate serde;
+extern crate serde_json;
+
 extern crate rustc_serialize;
 extern crate docopt;
 extern crate hyper;
 extern crate encoding;
 extern crate select;
 extern crate postgres;
+#[macro_use]
+extern crate rustless;
+
+extern crate iron;
+extern crate url;
+
+extern crate valico;
 
 pub mod connection;
 pub mod crawler;
+pub mod api;
+pub mod models;
 
 use docopt::Docopt;
 
@@ -14,10 +28,10 @@ const USAGE: &'static str = "
 Body Count: a list or total of casualties.
 
 Usage:
-  body_count_rn (-w | --http)
-  body_count_rn (-s | --crawler)
-  body_count_rn (-h | --help)
-  body_count_rn --version
+  body_count (-w | --http)
+  body_count (-s | --crawler)
+  body_count (-h | --help)
+  body_count --version
 
 Options:
   -w --http       Start API.
@@ -42,6 +56,6 @@ fn main() {
     }
 
     if args.flag_http {
-        println!("http {:?}", args);
+        api::start();
     }
 }

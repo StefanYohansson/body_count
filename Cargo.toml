@@ -1,5 +1,5 @@
 [package]
-name = "body_count_rn"
+name = "body_count"
 version = "0.1.0"
 authors = ["snotrz"]
 
@@ -10,6 +10,14 @@ select = "0.2.2"
 postgres = "0.11"
 docopt = "0.6"
 rustc-serialize = "0.3"
+url = "1.2.0"
+serde = "0.8.6"
+serde_json = "0.8.1"
+serde_macros = "0.8.7"
+valico = "1.0.1"
+
+[dependencies.iron]
+version = "*"
 
 [dependencies.rustless]
 git = "https://github.com/rustless/rustless"

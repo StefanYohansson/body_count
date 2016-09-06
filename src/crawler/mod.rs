@@ -1,19 +1,5 @@
 use connection;
 
-#[derive(Debug, Clone)]
-pub struct TheDead {
-    pub id: i32,
-    pub register_date: String,
-    pub deceased_date: String,
-    pub name: String,
-    pub gender: String,
-    pub age: String,
-    pub address: String,
-    pub place: String,
-    pub cause_death: String,
-    pub city: String
-}
-
 pub mod itep_rn;
 
 pub fn request() {
@@ -22,7 +8,8 @@ pub fn request() {
 
     for dead in &result {
         let query = conn.query("SELECT register_date, deceased_date, name, gender, age, address,
-        place, cause_death, city FROM deads WHERE name = $1 AND register_date = $2 AND place = $3",
+        place, cause_death, city, source FROM deads
+        WHERE name = $1 AND register_date = $2 AND place = $3",
         &[&dead.name, &dead.register_date, &dead.place]).unwrap();
         if query.len() > 0 {
             continue;
@@ -38,7 +25,8 @@ pub fn request() {
             &dead.address,
             &dead.place,
             &dead.cause_death,
-            &dead.city
+            &dead.city,
+            &dead.source
         ]);
     }
 }

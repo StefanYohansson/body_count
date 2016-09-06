@@ -1,7 +1,26 @@
 Body Count
 ===
 
-# Migrate
+### Usage
+
+```
+Body Count: a list or total of casualties.
+
+Usage:
+  body_count (-w | --http)
+  body_count (-s | --crawler)
+  body_count (-h | --help)
+  body_count --version
+
+Options:
+  -w --http       Start API.
+  -d --deamon     Start API as daemon.
+  -s --crawler    Get data from ITEP.
+  -h --help       Show this screen.
+  --version       Show version.
+```
+
+### Migrate
 
 ```
 CREATE TABLE deads (
@@ -14,6 +33,7 @@ CREATE TABLE deads (
   address VARCHAR,
   place VARCHAR,
   cause_death VARCHAR,
-  city VARCHAR
+  city VARCHAR,
+  source VARCHAR NOT NULL
 );
 ```
