@@ -38,4 +38,21 @@ impl TheDead {
         });
         return deads;
     }
+
+    pub fn insert(&self, conn: &postgres::Connection) {
+        conn.execute("INSERT INTO deads (register_date, deceased_date, name, gender, age, address,
+        place, cause_death, city, source) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)",
+        &[
+            &self.register_date,
+            &self.deceased_date,
+            &self.name,
+            &self.gender,
+            &self.age,
+            &self.address,
+            &self.place,
+            &self.cause_death,
+            &self.city,
+            &self.source
+        ]);
+    }
 }
