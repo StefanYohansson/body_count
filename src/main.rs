@@ -44,7 +44,8 @@ Options:
 #[derive(Debug, RustcDecodable)]
 struct Args {
     flag_http: bool,
-    flag_crawler: bool
+    flag_crawler: bool,
+    flag_version: bool
 }
 
 fn main() {

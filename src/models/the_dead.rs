@@ -17,6 +17,7 @@ pub struct TheDead {
 
 impl TheDead {
     pub fn latest(conn: &postgres::Connection) -> Vec<TheDead> {
+        // @TODO(snotr): implement pagination
         let deads = conn.query("SELECT id, register_date, deceased_date, name, gender, age, address,
         place, cause_death, city, source FROM deads ORDER BY register_date DESC",
         &[]).unwrap().iter().fold(<Vec<TheDead>>::new(), |mut acc, row| {

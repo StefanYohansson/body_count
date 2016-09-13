@@ -12,6 +12,7 @@ use serde_json;
 
 use connection;
 use models::the_dead;
+use models::source;
 
 #[derive(Debug)]
 pub struct UnauthorizedError;
@@ -55,6 +56,17 @@ pub fn start() {
                 let deads = the_dead::TheDead::latest(&conn);
                 let deads_s = serde_json::to_value(&deads);
                 return client.json(&&deads_s);
+            })
+        });
+
+        api.get("sources", |endpoint| {
+            endpoint.summary("Send a list of crawler sources.");
+            endpoint.desc("List crawler sources to know where we got the data.");
+            endpoint.handle(|client, params| {
+                let conn = connection::db_conn();
+                let sources = source::Source::all(&conn);
+                let sources_s = serde_json::to_value(&sources);
+                return client.json(&&sources_s);
             })
         });
 

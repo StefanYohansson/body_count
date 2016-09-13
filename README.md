@@ -36,4 +36,11 @@ CREATE TABLE deads (
   city VARCHAR,
   source VARCHAR NOT NULL
 );
+
+CREATE TABLE sources (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL
+);
+
+INSERT INTO sources (name) VALUES ('itep-rn');
 ```
